@@ -1,0 +1,7 @@
+{ 
+    "Cores": {
+        "Padrão": "#7df658",
+        "Falha": "Red",
+        "Sucesso": "Green"
+    }
+}
