@@ -49,7 +49,7 @@ client.on("guildMemberAdd", (member) => {
     .setColor(cor.Cores.Padrão)
     .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
     .setTitle("👋 Boas Vindas!")
-    .setDescription(`> Olá ${member}!\nSeja Bem-Vindo(a) a LuckyCodes \`${member.guild.name}\`!\n Site: luckycodes.app`);
+    .setDescription(`Olá ${member}!\nSeja Bem-Vindo(a) a LuckyCodes \`${member.guild.name}\`!\n Responda o <#1086606163883339838> para ter acesso ao servidor.\n Recomendamos dar uma lida no canal <#1089660025863147581>, lá tem tudo que você precisa.`);
   
     member.guild.channels.cache.get(canal_logs).send({ embeds: [embed], content: `${member}` }) 
   })
