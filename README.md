@@ -5,7 +5,7 @@
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/LuckyCodes-App/Bot-Lucky-Codes?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/LuckyCodes-App/Bot-Lucky-Codes?style=for-the-badge)
 
-> Essa é a base do bot de testes da LuckyCodes
+> Esse é o bot da LuckyCodes
 
 ## 💻 Pré-requisitos
 
