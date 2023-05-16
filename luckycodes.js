@@ -27,20 +27,11 @@ const client = new Client({
     ],
 });
 
-//**      HANDLERS      *//
 ['commands'].forEach(f => client[f] = new Collection());
 ['commands', 'events'].forEach(f => require(`./src/handlers/${f}`)(client));
-//**      HANDLERS      *//
 
-
-
-//**      TOKEN      *//
 client.login(process.env.TOKEN);
-//**      TOKEN      *//
 
-
-
-//**      ENTRADA      *//
 client.on("guildMemberAdd", (member) => {
     let canal_logs = "1086606160259453068";
     if (!canal_logs) return;
@@ -49,24 +40,19 @@ client.on("guildMemberAdd", (member) => {
     .setColor(cor.Cores.Padrão)
     .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
     .setTitle("👋 Boas Vindas!")
-    .setDescription(`Olá ${member}!\nSeja Bem-Vindo(a) a LuckyCodes \`${member.guild.name}\`!\n Responda o <#1086606163883339838> para ter acesso ao servidor.\n Recomendamos dar uma lida no canal <#1089660025863147581>, lá tem tudo que você precisa.`);
+    .setDescription(`Olá ${member}!\nSeja Bem-Vindo(a) a LuckyCodes \`${member.guild.name}\`!\n Recomendamos dar uma lida no canal <#1089660025863147581>, lá tem tudo que você precisa.`);
   
     member.guild.channels.cache.get(canal_logs).send({ embeds: [embed], content: `${member}` }) 
-  })
-//**      ENTRADA      *//
+})
 
+client.on("guildMemberAdd", (member) => {
+  let cargo_autorole = member.guild.roles.cache.get("1107823656366788669");
+  if (!cargo_autorole)
+    return console.log("❌ O AUTOROLE não está configurado.");
 
-
-//**      CAPTCHA      *//
-client.on("interactionCreate", async (interaction) => {
-    if (interaction.isButton()) {
-      if (interaction.customId === "verificar") {
-        let role_id = await db.get(`cargo_verificação_${interaction.guild.id}`);
-        let role = interaction.guild.roles.cache.get(role_id);
-        if (!role) return;
-        interaction.member.roles.add(role.id)
-        interaction.reply({ content: `Ola **${interaction.user.username}**, você foi verificado!`, ephemeral: true })
-      }
-    }
-  })
-//**      CAPTCHA      *//
+  member.roles.add(cargo_autorole.id).catch((err) => {
+    console.log(
+      `❌ Não foi possível adicionar o cargo de autorole no usuário ${member.user.tag}.`
+    );
+  });
+});
